@@ -660,6 +660,8 @@
       .research-slide .lead,.research-cover .lead{font-size:16px;line-height:1.95;text-align:justify;text-align-last:center}
       .research-grid{gap:14px}
       .semantic-visual,body.projector-mode .semantic-visual{flex:none!important;min-height:240px!important;height:auto!important;padding:14px;align-content:center}
+      .semantic-visual>*{min-width:0;max-width:100%;box-sizing:border-box}
+      .semantic-visual>svg{width:100%;max-width:100%;overflow:hidden}
       .topic-list{gap:9px}.topic-item{grid-template-columns:minmax(0,1fr) 44px;gap:7px}
       .topic-link,body.projector-mode .topic-link{min-height:60px;padding:12px 11px;font-size:17px!important;line-height:1.65!important}
       .term-info{width:44px;min-height:60px;border-radius:13px;font-size:13px}
@@ -678,8 +680,8 @@
 
       /* Network and tree diagrams use stable cards with no absolute-position collisions. */
       .v-network,.v-tree{max-width:none;gap:10px}
-      .v-network span,.v-tree strong,.v-tree span{min-height:68px;padding:11px 9px;font-size:14px;line-height:1.55}
-      .v-network .n3{min-height:64px}
+      .v-network span,.v-tree strong,.v-tree span{inset:auto!important;min-height:68px;padding:11px 9px;font-size:14px;line-height:1.55}
+      .v-network .n3{inset:auto!important;min-height:64px}
 
       /* Overlap diagrams retain their relationships without overlapping text. */
       .visual-blend .v-venn,.visual-synthesis .v-venn{gap:10px}
@@ -702,6 +704,23 @@
       .v-stable-distribution{gap:9px}.v-stable-distribution span,.v-stable-distribution span.focus{min-height:72px;padding:10px}.v-stable-distribution b{font-size:14px;line-height:1.5}
       .v-matrix{grid-template-columns:1fr 1fr;gap:9px}.v-matrix span{min-height:72px;padding:11px;font-size:14px;line-height:1.55}
       .v-emblem-core{font-size:15px;line-height:1.55}.v-emblem span,.v-emblem span:nth-of-type(1),.v-emblem span:nth-of-type(2){font-size:14px;line-height:1.55}
+      .v-emblem span,.v-emblem span:nth-of-type(1),.v-emblem span:nth-of-type(2){inset:auto!important}
+      /* Projector may remain selected in local storage; mobile geometry always wins. */
+      body.projector-mode :is(#persona-10-02,#persona-18-01) .semantic-visual{height:auto!important;max-height:none!important;padding:14px!important}
+      body.projector-mode :is(#persona-10-02,#persona-18-01) .v-stable-meters{width:100%!important;max-width:none!important;gap:10px!important}
+      body.projector-mode :is(#persona-10-02,#persona-18-01) .v-stable-meters div{grid-template-columns:1fr!important;min-height:72px!important;gap:8px!important;padding:11px!important}
+      body.projector-mode :is(#persona-10-02,#persona-18-01) .v-stable-meters b{font-size:14px!important;line-height:1.55!important;text-align:center!important}
+      body.projector-mode #persona-14-02 .v-venn,body.projector-mode #persona-17-01 .v-stable-triad{grid-template-columns:1fr!important;grid-template-rows:auto!important}
+      body.projector-mode #persona-14-02 .v-venn :is(span,strong),body.projector-mode #persona-17-01 .v-stable-triad :is(span,strong){grid-column:auto!important;grid-row:auto!important;min-height:68px!important}
+      body.projector-mode :is(.visual-route,.visual-timeline,.visual-staircase,.visual-bridge) .v-route{position:relative!important;inset:auto!important;display:grid!important;grid-template-columns:1fr!important;grid-template-rows:none!important;gap:18px!important;width:100%!important}
+      body.projector-mode :is(.visual-route,.visual-timeline,.visual-staircase,.visual-bridge) .v-route span{position:relative!important;inset:auto!important;grid-column:auto!important;grid-row:auto!important;width:100%!important;max-width:none!important;min-height:62px!important;padding:11px 50px 11px 13px!important;font-size:15px!important;line-height:1.55!important;writing-mode:horizontal-tb!important;overflow-wrap:normal!important;word-break:normal!important}
+      body.projector-mode :is(.visual-route,.visual-timeline,.visual-staircase,.visual-bridge) .v-route span:after,body.projector-mode :is(.visual-route,.visual-timeline,.visual-staircase,.visual-bridge) .v-route span:not(:last-child):after{content:counter(mobile-step)!important;position:absolute!important;inset:auto 11px auto auto!important;top:50%!important;transform:translateY(-50%)!important;width:27px!important;height:27px!important;display:grid!important;place-items:center!important;border-radius:9px!important;background:var(--accent)!important;color:#fff!important;font-size:12px!important;line-height:1!important;font-weight:950!important}
+      body.projector-mode :is(.visual-route,.visual-timeline,.visual-staircase,.visual-bridge) .v-route span:last-child:after{background:var(--complement)!important}
+      body.projector-mode :is(.visual-route,.visual-timeline,.visual-staircase,.visual-bridge) .v-route span+span:before{content:"↓"!important;position:absolute!important;top:-19px!important;right:50%!important;left:auto!important;transform:translateX(50%)!important;color:var(--accent)!important;font-size:18px!important}
+      body.projector-mode :is(.visual-funnel,.visual-questionnaire,.visual-pipeline,.visual-gates) .v-flow{display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:center!important;width:100%!important;gap:8px!important}
+      body.projector-mode :is(.visual-funnel,.visual-questionnaire,.visual-pipeline,.visual-gates) .v-flow span{width:100%!important;max-width:300px!important;min-height:54px!important;padding:10px 12px!important;font-size:15px!important;line-height:1.55!important;writing-mode:horizontal-tb!important;word-break:normal!important;overflow-wrap:normal!important;text-align:center!important}
+      body.projector-mode :is(.visual-funnel,.visual-questionnaire,.visual-pipeline,.visual-gates) .v-flow i{transform:rotate(-90deg)!important;font-size:22px!important;line-height:1!important}
+      body.projector-mode :is(.visual-funnel,.visual-questionnaire,.visual-pipeline,.visual-gates) .v-track{position:relative!important;inset:auto!important;width:100%!important;max-width:300px!important;height:8px!important;margin:6px auto 0!important}
       .cover-slide .slide-frame{padding-bottom:96px}.research-cover{gap:22px}.research-cover .cover-copy{flex:0 0 auto}.research-radar{flex:0 0 auto!important}
     }
     @media(prefers-reduced-motion:reduce){.semantic-visual *,.radar-sweep{animation:none!important}}
